@@ -92,16 +92,16 @@ public static class UserDataManager
     }
 
     [DllImport("__Internal")]
-    private static extern void aSaveData(string key, string data);
+    private static extern void saveData(string key, string data);
 
     [DllImport("__Internal")]
-    private static extern string aLoadData(string key);
+    private static extern string loadData(string key);
 
     [DllImport("__Internal")]
-    private static extern string aDeleteKey(string key);
+    private static extern string deleteKey(string key);
 
     [DllImport("__Internal")]
-    private static extern string aDeleteAllKeys(string prefix);
+    private static extern string deleteAllKeys(string prefix);
 
 }
 
