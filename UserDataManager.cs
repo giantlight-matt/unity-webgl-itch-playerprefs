@@ -51,7 +51,7 @@ public static class UserDataManager
         #if UNITY_WEBGL && !UNITY_EDITOR
         var data = loadData(PrefixKey(key));
         if(data != string.Empty){
-            return int.Parse(aLoadData(PrefixKey(key)));
+            return int.Parse(loadData(PrefixKey(key)));
         }
 
         return defaultValue;
@@ -65,7 +65,7 @@ public static class UserDataManager
         #if UNITY_WEBGL && !UNITY_EDITOR
         var data = loadData(PrefixKey(key));
         if(data != string.Empty){
-            return float.Parse(aLoadData(PrefixKey(key)));
+            return float.Parse(loadData(PrefixKey(key)));
         }
 
         return defaultValue;
