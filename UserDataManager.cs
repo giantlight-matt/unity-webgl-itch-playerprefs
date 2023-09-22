@@ -16,7 +16,7 @@ public static class UserDataManager
 
     public static void SetString(string key, string data){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        aSaveData(PrefixKey(key), data);
+        saveData(PrefixKey(key), data);
         #else
         PlayerPrefs.SetString(key, data);
         #endif
@@ -24,7 +24,7 @@ public static class UserDataManager
 
     public static void SetInt(string key, int data){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        aSaveData(PrefixKey(key), data.ToString());
+        saveData(PrefixKey(key), data.ToString());
         #else
         PlayerPrefs.SetInt(key, data);
         #endif
@@ -32,7 +32,7 @@ public static class UserDataManager
 
     public static void SetFloat(string key, float data){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        aSaveData(PrefixKey(key), data.ToString());
+        saveData(PrefixKey(key), data.ToString());
         #else
         PlayerPrefs.SetFloat(key, data);
         #endif
@@ -41,7 +41,7 @@ public static class UserDataManager
 
     public static string GetString(string key, string defaultValue = ""){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        return aLoadData(PrefixKey(key));
+        return loadData(PrefixKey(key));
         #else
         return PlayerPrefs.GetString(key);
         #endif
@@ -49,7 +49,7 @@ public static class UserDataManager
 
     public static int GetInt(string key, int defaultValue = 0){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        var data = aLoadData(PrefixKey(key));
+        var data = loadData(PrefixKey(key));
         if(data != string.Empty){
             return int.Parse(aLoadData(PrefixKey(key)));
         }
@@ -63,7 +63,7 @@ public static class UserDataManager
 
     public static float GetFloat(string key, float defaultValue = 0){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        var data = aLoadData(PrefixKey(key));
+        var data = loadData(PrefixKey(key));
         if(data != string.Empty){
             return float.Parse(aLoadData(PrefixKey(key)));
         }
@@ -76,7 +76,7 @@ public static class UserDataManager
 
     public static bool HasKey(string key){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        var data = aLoadData(PrefixKey(key));
+        var data = loadData(PrefixKey(key));
         return data != string.Empty;
         #else
         return PlayerPrefs.HasKey(key);
@@ -85,7 +85,7 @@ public static class UserDataManager
 
     public static void DeleteKey(string key){
         #if UNITY_WEBGL && !UNITY_EDITOR
-        aDeleteKey(PrefixKey(key));
+        deleteKey(PrefixKey(key));
         #else
         PlayerPrefs.DeleteKey(key);
         #endif
