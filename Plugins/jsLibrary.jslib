@@ -1,0 +1,29 @@
+mergeInto(LibraryManager.library, {
+    loadData: function(yourkey){
+        var returnStr = "";
+
+        if(localStorage.getItem(UTF8ToString(yourkey)) !==null)
+        {
+            returnStr = localStorage.getItem(UTF8ToString(yourkey));
+        }
+
+        var bufferSize = lengthBytesUTF8(returnStr) + 1;
+        var buffer = _malloc(bufferSize);
+        stringToUTF8(returnStr, buffer, bufferSize);
+        return buffer;
+    },
+    saveData: function(yourkey, yourdata){
+        localStorage.setItem(UTF8ToString(yourkey), UTF8ToString(yourdata));
+    },
+    deleteKey: function(yourkey){
+        localStorage.removeItem(UTF8ToString(yourkey));
+    },
+    deleteAllKeys: function(prefix){
+        for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+            var key = localStorage.key(i);
+            if(key != null && key.startsWith(prefix)){
+                localStorage.removeItem(key);
+            }
+        }
+    }
+});
