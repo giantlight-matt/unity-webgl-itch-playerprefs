@@ -21,7 +21,7 @@ mergeInto(LibraryManager.library, {
     deleteAllKeys: function(prefix){
         for ( var i = 0, len = localStorage.length; i < len; ++i ) {
             var key = localStorage.key(i);
-            if(key != null && key.startsWith(prefix)){
+            if(key != null && key.startsWith(UTF8ToString(prefix))){
                 localStorage.removeItem(key);
             }
         }
