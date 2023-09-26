@@ -19,10 +19,12 @@ mergeInto(LibraryManager.library, {
         localStorage.removeItem(UTF8ToString(yourkey));
     },
     deleteAllKeys: function(prefix){
-        for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+        var len = localStorage.length;
+        for (var i = 0; i < len; i++ ) {
             var key = localStorage.key(i);
             if(key != null && key.startsWith(UTF8ToString(prefix))){
                 localStorage.removeItem(key);
+                i--;
             }
         }
     }
